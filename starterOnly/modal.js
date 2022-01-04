@@ -32,6 +32,31 @@ closeModal.addEventListener("click", () => {
 
 let first, last, email, date, quantity, checkboxes, cgv;
 
+inputsTxt.forEach((input) =>{
+  input.addEventListener("input", (e) => {
+    switch (e.target.id){
+      case "first" :
+        fnameChecker(e.target.value)
+        break;
+      case "last" :
+        lnameChecker(e.target.value)
+        break;
+      case "email" :
+        emailChecker(e.target.value)
+        break;
+      case "birthdate" :
+        dateChecker(e.target.value)
+        break;
+      case "quantity" :
+        quantityChecker(e.target.value)
+        break;
+      default:
+        nul;
+    }
+  })
+})
+
+
 const errorDisplay = (tag, message, valid) =>{
   const span = document.querySelector("." + tag + "-container > span");
   const div= document.querySelector("." + tag + "-container > input");
@@ -91,14 +116,13 @@ const emailChecker = (value) => {
 };
 
 const dateChecker = (value) => {
-  if (value.match(/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/)) {
-    errorDisplay("birthdate", "", true);
-    date = value;
-
-  }
-  else {
+  if (!value.match(/^\d{4}\-\d{1,2}\-\d{1,2}$/)) {
     errorDisplay("birthdate", "La date de naissance n'est pas valide.")
     date = null;
+  }
+  else {
+    errorDisplay("birthdate", "", true);
+    date = value;
   }
 
 };
@@ -117,41 +141,27 @@ const quantityChecker = (value) => {
 
 };
 
-document.addEventListener('submit', function() {
-  var len = document.querySelectorAll('.checkbox input[type="checkbox"]:checked').length;
-  if (len <= 0) {
-    msg.innerHTML = "Please check at least one";
-  } else {
-    msg.innerHTML = "Your have checked <span style='color:red'>" + len + "</span> checkbox";
-  }
-})
 
 
 
-inputsTxt.forEach((input) =>{
-  input.addEventListener("input", (e) => {
-    switch (e.target.id){
-      case "first" :
-        fnameChecker(e.target.value)
-        break;
-      case "last" :
-        lnameChecker(e.target.value)
-        break;
-      case "email" :
-        emailChecker(e.target.value)
-        break;
-      case "birthdate" :
-        dateChecker(e.target.value)
-        break;
-      case "quantity" :
-        quantityChecker(e.target.value)
-        break;
-      default:
-        nul;
+// radio and checkbox checker
+
+var radios = document.querySelectorAll('[name="location"]');
+
+function radioChecker () {
+  for (let i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      checkboxes = radios[i].value;
     }
-  })
-})
+  }
+}
 
+function cgvChecker () {
+  if (document.getElementById('checkbox1').checked) {
+    cgv = "Coché";
+    console.log(cgv);
+  }
+}
 
 
 
