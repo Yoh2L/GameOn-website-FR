@@ -9,9 +9,12 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalbgthks = document.querySelector(".bgthks");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModal = document.querySelector(".close");
+const closeModalThks = document.querySelector(".close-thks");
+const fermerModalThks = document.querySelector(".fermer-modal");
 const inputsTxt = document.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], input[type="number"]');
 const city = document.querySelectorAll("input[type=radio]");
 
@@ -27,6 +30,15 @@ function launchModal() {
 closeModal.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
+
+closeModalThks.addEventListener("click", () => {
+  modalbgthks.style.display = "none";
+});
+
+fermerModalThks.addEventListener("click", () => {
+  modalbgthks.style.display = "none";
+});
+
 
 // name / email / date / quantity checker
 
@@ -159,9 +171,77 @@ function radioChecker () {
 function cgvChecker () {
   if (document.getElementById('checkbox1').checked) {
     cgv = "Coché";
-    console.log(cgv);
+  }
+  else {
+    cgv = null;
   }
 }
+
+// Submit
+var form = document.querySelector('.btn-submit');
+let checkNbr = 0;
+
+form.addEventListener('click', event => {
+  event.preventDefault();
+  radioChecker();
+  cgvChecker();
+  if (checkboxes) {
+    checkNbr++;
+    errorDisplay("city", "",true);
+  } else {
+    errorDisplay("city", "Veuillez cocher une case.");
+    checkNbr = 0;
+  }
+  if (cgv) {
+    checkNbr++;
+    errorDisplay("cgv", "",true);
+  } else {
+    errorDisplay("cgv", "Veuillez accepter les CGV.");
+    checkNbr = 0;
+  }
+  if (first) {
+    checkNbr++;
+  } else {
+    errorDisplay("first", "Veuillez renseigner votre prénom");
+    checkNbr = 0;
+  }
+  if (last) {
+    checkNbr++;
+  } else {
+    errorDisplay("last", "Veuillez renseigner votre nom.");
+    checkNbr = 0;
+  }
+  if (email) {
+    checkNbr++;
+  } else {
+    errorDisplay("email", "Veuillez renseigner votre email.");
+    checkNbr = 0;
+  }
+  if (date) {
+    checkNbr++;
+  } else {
+    errorDisplay("birthdate", "Veuillez renseigner votre date de naissance.");
+    checkNbr = 0;
+  }
+  if (quantity) {
+    checkNbr++;
+  } else {
+    errorDisplay("quantity", "Veuillez indiquer le nombre de tournois.");
+    checkNbr = 0;
+  }
+  if (checkNbr == 7) {
+    checkNbr = 0;
+    console.log("Bonjour");
+    modalbg.style.display = "none";
+    modalbgthks.style.display = "block";
+  } else {
+    checkNbr = 0;
+
+  }
+});
+
+
+
 
 
 

@@ -187,6 +187,18 @@ form{
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.bgthks {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -201,9 +213,28 @@ form{
   padding-top: 10px;
 }
 
+.content-thks {
+
+  width: 500px;
+  height: 823px;
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.txt-thks {
+  text-align: center;
+  position: absolute;
+  width: 271px;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
 }
 
 label {
@@ -350,6 +381,14 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.fermer-modal {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 3%;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
