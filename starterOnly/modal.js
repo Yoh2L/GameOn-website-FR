@@ -13,8 +13,10 @@ const modalbgthks = document.querySelector(".bgthks");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModal = document.querySelector(".close");
+// Subscription confirm Modal
 const closeModalThks = document.querySelector(".close-thks");
 const fermerModalThks = document.querySelector(".fermer-modal");
+// Input Elements
 const inputsTxt = document.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], input[type="number"]');
 const city = document.querySelectorAll("input[type=radio]");
 
@@ -68,6 +70,7 @@ inputsTxt.forEach((input) =>{
   })
 })
 
+// Error function
 
 const errorDisplay = (tag, message, valid) =>{
   const span = document.querySelector("." + tag + "-container > span");
@@ -83,6 +86,8 @@ const errorDisplay = (tag, message, valid) =>{
     span.textContent = message;
   }
 }
+
+// First name checker
 
 const fnameChecker = (value) => {
   if (value.length < 2 || value.length > 20){
@@ -100,6 +105,8 @@ const fnameChecker = (value) => {
 
 };
 
+// Last name checker
+
 const lnameChecker = (value) => {
   if (value.length < 2 || value.length > 20){
     errorDisplay("last", "Le nom doit être compris entre 2 et 20 caractères.")
@@ -115,6 +122,8 @@ const lnameChecker = (value) => {
   }
 };
 
+// Email Checker
+
 const emailChecker = (value) => {
   if (!value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i)) {
     errorDisplay('email', "Le mail n'est pas valide.");
@@ -124,8 +133,9 @@ const emailChecker = (value) => {
     errorDisplay("email", "", true);
     email = value;
   }
-
 };
+
+//Date Checker
 
 const dateChecker = (value) => {
   if (!value.match(/^\d{4}\-\d{1,2}\-\d{1,2}$/)) {
@@ -139,7 +149,7 @@ const dateChecker = (value) => {
 
 };
 
-
+// Quantity checker
 
 const quantityChecker = (value) => {
   if (!value.match(/^\d+$/)) {
@@ -156,9 +166,9 @@ const quantityChecker = (value) => {
 
 
 
-// radio and checkbox checker
+// Radio checker
 
-var radios = document.querySelectorAll('[name="location"]');
+let radios = document.querySelectorAll('[name="location"]');
 
 function radioChecker () {
   for (let i = 0; i < radios.length; i++) {
@@ -167,6 +177,8 @@ function radioChecker () {
     }
   }
 }
+
+// CGV checker
 
 function cgvChecker () {
   if (document.getElementById('checkbox1').checked) {
@@ -178,7 +190,7 @@ function cgvChecker () {
 }
 
 // Submit
-var form = document.querySelector('.btn-submit');
+let form = document.querySelector('.btn-submit');
 let checkNbr = 0;
 
 form.addEventListener('click', event => {
@@ -231,7 +243,6 @@ form.addEventListener('click', event => {
   }
   if (checkNbr == 7) {
     checkNbr = 0;
-    console.log("Bonjour");
     modalbg.style.display = "none";
     modalbgthks.style.display = "block";
   } else {
