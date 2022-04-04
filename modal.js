@@ -163,9 +163,6 @@ const quantityChecker = (value) => {
 
 };
 
-
-
-
 // Radio checker
 
 let radios = document.querySelectorAll('[name="location"]');
