@@ -197,6 +197,7 @@ form{
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  
 }
 
 .content {
@@ -214,8 +215,6 @@ form{
 }
 
 .content-thks {
-
-  width: 500px;
   height: 823px;
 }
 

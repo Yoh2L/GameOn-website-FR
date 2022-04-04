@@ -42,7 +42,7 @@ fermerModalThks.addEventListener("click", () => {
 });
 
 
-// name / email / date / quantity checker
+// Name / email / date / quantity checker
 
 let first, last, email, date, quantity, checkboxes, cgv;
 
@@ -190,6 +190,7 @@ function cgvChecker () {
 }
 
 // Submit
+var frm = document.getElementById('reserve');
 let form = document.querySelector('.btn-submit');
 let checkNbr = 0;
 
@@ -244,10 +245,10 @@ form.addEventListener('click', event => {
   if (checkNbr == 7) {
     checkNbr = 0;
     modalbg.style.display = "none";
+    frm.reset();
     modalbgthks.style.display = "block";
   } else {
     checkNbr = 0;
-
   }
 });
 
